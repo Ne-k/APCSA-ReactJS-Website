@@ -28,7 +28,7 @@ const Grid = ({ tab }) => {
     }, [alertMessage]);
 
     const handleSignOut = async (name) => {
-        const response = await fetch('http://localhost:3002/signout', {
+        const response = await fetch('http://localhost:3002/signOut', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ const Grid = ({ tab }) => {
     };
 
     const handleSignIn = async (name) => {
-        const response = await fetch('http://localhost:3002/signoin', {
+        const response = await fetch('http://localhost:3002/signIn', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

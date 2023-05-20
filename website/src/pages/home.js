@@ -18,7 +18,7 @@ function Home() {
     return (
         <div>
             {tabs.map(tab => (
-                <button className="custom-button" key={tab} onClick={() => setTab(tab)}>
+                <button className="custom-button" style={{color:"#767d8a"}} key={tab} onClick={() => setTab(tab)}>
                     {tab}
                 </button>
 

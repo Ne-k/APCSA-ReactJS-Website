@@ -56,7 +56,7 @@ app.post('/signOut', async (req, res) => {
 });
 
 
-app.post('/signoIn', async (req, res) => {
+app.post('/signIn', async (req, res) => {
     let data = '';
     req.on('data', chunk => {
         data += chunk;
