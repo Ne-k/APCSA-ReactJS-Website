@@ -6,7 +6,7 @@ function Home() {
     const [tab, setTab] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3002/tabs')
+        fetch('http://172.16.0.2:3002/tabs')
             .then(response => response.json())
             .then(tabs => {
                 const filteredTabs = tabs.filter(tab => /^Period \d+$/.test(tab));

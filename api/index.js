@@ -1,6 +1,7 @@
 const express = require('express');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const credentials = require('../google-creds.json');
+const moment = require("moment");
 
 const SPREADSHEET_ID = '1mVxQJ9yYF7vlfF6wDDZJRNoke1WvIqzqooxV0Rc-2ag';
 const doc = new GoogleSpreadsheet(SPREADSHEET_ID);
@@ -44,7 +45,7 @@ app.post('/signOut', async (req, res) => {
     });
     req.on('end', async () => {
         const name = data;
-        const timestamp = new Date().toISOString();
+        const timestamp = moment(new Date().toISOString()).format('MMMM Do YYYY, h:mm:ss a')
 
         await doc.useServiceAccountAuth(credentials);
         await doc.loadInfo();
@@ -63,7 +64,7 @@ app.post('/signIn', async (req, res) => {
     });
     req.on('end', async () => {
         const name = data;
-        const timestamp = new Date().toISOString();
+        const timestamp = moment(new Date().toISOString()).format('MMMM Do YYYY, h:mm:ss a')
 
         await doc.useServiceAccountAuth(credentials);
         await doc.loadInfo();
@@ -80,6 +81,6 @@ app.post('/signIn', async (req, res) => {
 });
 
 
-app.listen(3002,() => {
-    console.log('API listening on port 192.168.123.312:3002');
+app.listen(3002,"172.16.0.2", () => {
+    console.log('API listening on port 172.16.0.2:3002');
 });

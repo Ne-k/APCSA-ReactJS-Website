@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 
 async function fetchNames(tab) {
-    const response = await fetch(`http://localhost:3002/names?tab=${encodeURIComponent(tab)}`);
+    const response = await fetch(`http://172.16.0.2:3002/names?tab=${encodeURIComponent(tab)}`);
     return await response.json();
 }
 
@@ -28,7 +28,7 @@ const Grid = ({ tab }) => {
     }, [alertMessage]);
 
     const handleSignOut = async (name) => {
-        const response = await fetch('http://localhost:3002/signOut', {
+        const response = await fetch('http://172.16.0.2:3002/signOut', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ const Grid = ({ tab }) => {
     };
 
     const handleSignIn = async (name) => {
-        const response = await fetch('http://localhost:3002/signIn', {
+        const response = await fetch('http://172.16.0.2:3002/signIn', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,6 +62,7 @@ const Grid = ({ tab }) => {
                     <div className="alert-message">{alertMessage}</div>
                 </div>
             )}
+            <h2 style={{color: "#767d8a"}}>Side note: If you press "Sign in" without being signed out, you won't be logged as signed out/signed in.</h2>
             <div className="image-grid">
                 {names.sort().map(name => (
                     <div key={name} className="image-container">
