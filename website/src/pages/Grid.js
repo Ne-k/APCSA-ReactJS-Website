@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import config from '../config.json';
 
 async function fetchNames(tab) {
-    const response = await fetch(`http://172.16.0.2:3002/names?tab=${encodeURIComponent(tab)}`);
+    const response = await fetch(`http://${config.computer_ip}:3002/names?tab=${encodeURIComponent(tab)}`);
     return await response.json();
 }
 
@@ -28,7 +29,7 @@ const Grid = ({ tab }) => {
     }, [alertMessage]);
 
     const handleSignOut = async (name) => {
-        const response = await fetch('http://172.16.0.2:3002/signOut', {
+        const response = await fetch(`http://${config.computer_ip}:3002/signOut`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +43,7 @@ const Grid = ({ tab }) => {
     };
 
     const handleSignIn = async (name) => {
-        const response = await fetch('http://172.16.0.2:3002/signIn', {
+        const response = await fetch(`http://${config.computer_ip}:3002/signIn`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

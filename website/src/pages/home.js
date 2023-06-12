@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Grid from './Grid';
+import config from '../config.json'
 
 function Home() {
     const [tabs, setTabs] = useState([]);
     const [tab, setTab] = useState(null);
 
     useEffect(() => {
-        fetch('http://172.16.0.2:3002/tabs')
+        fetch(`http://${config.computer_ip}:3002/tabs`)
             .then(response => response.json())
             .then(tabs => {
                 const filteredTabs = tabs.filter(tab => /^Period \d+$/.test(tab));
